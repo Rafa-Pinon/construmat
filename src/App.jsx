@@ -5,7 +5,7 @@ import {
   Route,
   useNavigate,
 } from "react-router-dom"; // Importamos useNavigate
-import logo from "../src/logo/logo.png";
+import logoa from "../src/logo/logo.png";
 import "./App.css";
 import "./factura.css";
 import "./cortes.css";
@@ -31,7 +31,7 @@ function App() {
         <h1>CONSTRUMAT</h1>
       </div>
       <div className="logoa">
-        <img src={logo} alt="Logo" />
+        <img src={logoa} alt="Logo" />
       </div>
       <div className="button-container">
         {/* Usamos las funciones de navegación al hacer clic */}
