@@ -1,0 +1,122 @@
+/* Contenedor principal para centrar todo */
+body {
+  margin: 0px;
+  background-color: grey;
+}
+.header {
+  display: flex;
+  flex-direction: column; /* Apilar los elementos (título y logo) verticalmente */
+  justify-content: flex-start; /* Alinear al inicio (parte superior) */
+  align-items: center;
+  background-color: grey;
+  height: 100vh; /* Ocupa el 100% de la altura de la pantalla */
+  padding-top: 20px; /* Espacio adicional en la parte superior */
+  box-sizing: border-box; /* Incluye padding en el cálculo del tamaño */
+}
+
+/* Estilos para el título */
+.titulo {
+  text-align: center;
+  font-size: 200%;
+  color: black;
+  margin-bottom: -30px; /* Espacio entre el título y el logo */
+}
+
+/* Estilo para el logo */
+.logoa img {
+  width: 550px; /* Tamaño grande del logo para pantallas grandes */
+  height: auto;
+  margin-bottom: 30px; /* Espacio entre el logo y los botones */
+}
+
+/* Contenedor para los botones */
+.button-container {
+  display: flex;
+  width: 99%; /* Los botones ocuparán todo el ancho */
+  gap: 30px; /* Espacio entre los botones */
+  padding: 0 20px; /* Márgenes laterales para los botones */
+  flex-direction: row; /* Los botones están en fila por defecto */
+  position: absolute;
+  bottom: 0; /* Coloca los botones en la parte inferior en pantallas grandes */
+  
+}
+
+/* Estilos para los botones */
+.factura-button,
+.corte-button {
+  flex: 1; /* Hace que cada botón ocupe el mismo espacio */
+  background-color: #333; /* Fondo oscuro */
+  color: white;
+  border: none;
+  height: 50vh; /* Altura del 50% de la pantalla */
+  font-size: 100px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  border-radius: 8px; /* Borde redondeado */
+}
+
+.factura-button:hover,
+.corte-button:hover {
+  background-color: #e60000; /* Rojo cuando pasa el mouse */
+}
+
+.factura-button:active,
+.corte-button:active {
+  background-color: #b30000; /* Rojo más oscuro cuando es presionado */
+}
+
+/* Media Queries */
+
+/* Para pantallas pequeñas (teléfonos) */
+/* Media Queries */
+
+/* Para pantallas pequeñas (teléfonos) */
+@media (max-width: 767px) {
+  body {
+    background-color: grey; /* Asegura que el fondo sea gris */
+    overflow: hidden; /* Evita el desplazamiento */
+  }
+  
+  .header {
+    padding-top: 10px; /* Menos espacio en la parte superior */
+    justify-content: flex-start; /* Mantén los elementos apilados al inicio */
+    height: 100vh; /* Ocupa el 100% de la altura de la pantalla */
+    overflow: hidden; /* Evita el desplazamiento dentro del header */
+    background-color: grey; /* Fondo gris */
+  }
+
+  .titulo {
+    font-size: 1.5rem; /* Tamaño más pequeño para títulos */
+    margin-bottom: 5px; /* Menor espacio debajo del título */
+  }
+
+  .logoa img {
+    width: 200px; /* Tamaño más pequeño del logo */
+    margin-bottom: 30%; /* Espacio ajustado entre el logo y los botones */
+  }
+
+  .button-container {
+    flex-direction: column; /* Apila los botones verticalmente */
+    gap: 80px; /* Espacio entre los botones */
+    position: relative; /* Cambia la posición para que los botones estén debajo del logo */
+    width: 100%; /* Asegúrate de que los botones ocupen el ancho completo */
+    margin-top: 0; /* Elimina márgenes superiores */
+  }
+
+  .factura-button,
+  .corte-button {
+    height: 20vh; /* Botones más pequeños en pantallas pequeñas */
+    font-size: 3rem; /* Tamaño de texto ajustado */
+    border-radius: 5px; /* Borde ligeramente redondeado */
+    flex: none; /* Deshabilita el crecimiento automático */
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+
+  .factura-button:hover,
+  .corte-button:hover {
+    background-color: red; /* Hover en rojo brillante para móviles */
+  }
+}

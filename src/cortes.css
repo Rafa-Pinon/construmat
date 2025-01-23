@@ -1,0 +1,218 @@
+body {
+    /* background-color: black; */
+  }
+  
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .table-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .table-section {
+    flex: 1;
+    min-width: 45%;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    background: #f9f9f9;
+    box-sizing: border-box;
+  }
+  
+  .table-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .table-column {
+    flex: 1;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  table th,
+  table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  table th {
+    background-color: #f2f2f2;
+  }
+  
+  h2,
+  h3 {
+    margin: 0;
+    padding: 0 0 10px;
+  }
+  
+  .input {
+    margin-right: 10px;
+    padding: 8px;
+    font-size: 14px;
+  }
+  
+  .button {
+    padding: 8px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .button.income {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .button.expense {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .delete-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 3px;
+    font-size: 12px;
+  }
+  
+  .delete-button:hover {
+    background-color: #ff1a1a;
+  }
+  
+  /* Sección de resultados */
+  .results {
+    margin-top: 30px;
+    padding: 15px;
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center; /* Centrar el texto horizontalmente */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar los elementos dentro del contenedor */
+    justify-content: center; /* Centrar el contenido en el eje vertical si es necesario */
+  }
+  
+  .results h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  .results p {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #333;
+  }
+  
+  .results .highlight {
+    font-size: 24px;
+    font-weight: bold;
+    padding: 0 10px;
+  }
+  
+  .results .red-text {
+    color: red;
+    font-size: 28px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  /* Media Queries para pantallas más pequeñas */
+  @media screen and (max-width: 768px) {
+    .table-row {
+      flex-direction: column; /* Poner las columnas en fila en pantallas pequeñas */
+    }
+  
+    .table-column {
+      width: 100%;
+    }
+  
+    .table-section {
+      min-width: 100%;
+      padding: 15px;
+    }
+  
+    .input, .button {
+      width: 100%; /* Asegurar que los inputs y botones ocupen todo el ancho disponible */
+      margin-bottom: 10px;
+    }
+  
+    .results {
+      padding: 10px;
+    }
+  
+    .results h2 {
+      font-size: 20px;
+    }
+  
+    .results p {
+      font-size: 16px;
+    }
+  
+    .results .highlight {
+      font-size: 20px;
+    }
+  
+    .results .red-text {
+      font-size: 24px;
+    }
+  }
+  
+  /* Media Queries para pantallas más grandes (PC) */
+  @media screen and (min-width: 1024px) {
+    .container {
+      padding: 40px;
+    }
+  
+    .table-container {
+      gap: 30px;
+    }
+  
+    .table-section {
+      min-width: 45%; /* Dejar espacio para las columnas en pantallas grandes */
+    }
+  
+    .input {
+      width: auto; /* Devolver el tamaño del input a su comportamiento por defecto */
+    }
+  
+    .button {
+      width: auto; /* Ajustar el botón a su tamaño por defecto */
+    }
+  
+    .results h2 {
+      font-size: 28px;
+    }
+  
+    .results p {
+      font-size: 20px;
+    }
+  
+    .results .highlight {
+      font-size: 26px;
+    }
+  
+    .results .red-text {
+      font-size: 32px;
+    }
+  }
+  

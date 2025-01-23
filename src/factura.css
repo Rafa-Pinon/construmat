@@ -1,0 +1,184 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    font-size: larger;
+    margin: 0;
+    padding: 0;
+    color: #333;
+  }
+  
+  .app-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    
+  }
+  
+  .title {
+    text-align: center;
+    color: rgb(191, 7, 7);
+    
+    box-shadow: inset 0 -2px 0 0 #000; 
+    margin-bottom: 20px;
+  }
+  
+  .subtitle {
+    color: black;
+    margin-top: 20px;
+    display: inline-block;
+    box-shadow: inset 0 -2px 0 0 #000; 
+  }
+  
+  /* Form styles */
+  .form-container {
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 10px;
+  }
+  
+  .form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  /* Item group styles */
+  .item-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .item-group input {
+    flex: 1 1 calc(33.33% - 10px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  .administrador h3 {
+    text-decoration: underline;
+  }
+  .etiquetasp {
+    font-weight: bold;
+  }
+  
+  
+  @media (max-width: 768px) {
+    .item-group input {
+      flex: 1 1 100%;
+    }
+  }
+  
+  /* Button styles */
+  .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+  }
+  
+  .btn-add {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .btn-generate {
+    background-color: #4a90e2;
+    color: white;
+  }
+  
+  /* Invoice styles */
+  .invoice-container {
+    border: 1px solid #ddd;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    margin-top: 20px;
+    overflow-x: auto;
+  }
+  
+  .invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .invoice-table th,
+  .invoice-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  .invoice-table th {
+    background-color: rgb(191, 7, 7);
+    color: white;
+  }
+  
+  .logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    color:  black;
+  }
+  
+  .logo img {
+    width: 20%;
+    max-width: 100px;
+  }
+  
+  
+  @media (max-width: 768px) {
+    .logo {
+      justify-content: space-between;
+      gap: 10px;
+    }
+  
+    .logo img {
+      width: 50%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .app-container {
+      padding: 15px;
+      
+    }
+  
+    .title {
+      font-size: 20px;
+      
+    }
+  
+    .invoice-table th,
+    .invoice-table td {
+      font-size: 12px;
+      padding: 6px;
+    }
+  
+    .btn {
+      padding: 8px 15px;
+      font-size: 14px;
+    }
+  }
