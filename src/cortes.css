@@ -135,6 +135,26 @@ body {
     font-weight: bold;
     text-transform: uppercase;
   }
+  .button.home-button {
+    /* position: fixed;  */
+    bottom: 20px; /* Espacio desde el fondo */
+    right: 20px; /* Espacio desde el borde derecho */
+    background-color: #333; /* Fondo oscuro */
+    color: white;
+    border: none;
+    padding: 20px 30px; /* Tamaño del botón */
+    font-size: 1rem; /* Tamaño de fuente más pequeño que los otros botones */
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.3); /* Sombra rojiza sutil */
+  }
+  
+  .button.home-button:hover {
+    background-color: red;
+    box-shadow: 0 4px 10px rgba(255, 0, 0, 0.8);
+  }
   
   /* Media Queries para pantallas más pequeñas */
   @media screen and (max-width: 768px) {

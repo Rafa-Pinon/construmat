@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Importamos useNavigate para la navegación
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
 import Logo from "../logo/logo.png";
@@ -9,6 +10,16 @@ function Factura() {
     date: "",
     items: [{ description: "", quantity: "1", price: "0", unit: "" }],
   });
+  const navigate = useNavigate(); // Inicializamos el hook navigate
+
+  // Función para formatear el dinero
+  const formatCurrency = (amount) => {
+    return new Intl.NumberFormat("es-MX", {
+      style: "currency",
+      currency: "MXN",
+      minimumFractionDigits: 2,
+    }).format(amount);
+  };
 
   const handleInputChange = (e, index) => {
     const { name, value } = e.target;
@@ -29,6 +40,11 @@ function Factura() {
         { description: "", quantity: "1", price: "0", unit: "" },
       ],
     });
+  };
+
+  const deleteItem = (index) => {
+    const items = invoiceData.items.filter((_, i) => i !== index);
+    setInvoiceData({ ...invoiceData, items });
   };
 
   const calculateTotal = () => {
@@ -81,8 +97,17 @@ function Factura() {
     }
   };
 
+  // Función para navegar al home
+  const goToHome = () => {
+    navigate("/"); // Redirige a la página principal
+  };
+
   return (
     <div className="app-container">
+      {/* Botón Home */}
+      <button className="home-button" onClick={goToHome}>
+        Home
+      </button>
       <h1 className="title">FACTURAS CONSTRUMAT</h1>
       <form className="form-container">
         <div className="form-group">
@@ -147,6 +172,13 @@ function Factura() {
               onBlur={(e) => handleBlur(e, index)}
               onChange={(e) => handleInputChange(e, index)}
             />
+            <button
+              type="button"
+              onClick={() => deleteItem(index)} // Eliminar ítem
+              className="btn btn-delete"
+            >
+              Eliminar
+            </button>
           </div>
         ))}
         <button type="button" onClick={addItem} className="btn btn-add">
@@ -180,8 +212,10 @@ function Factura() {
                 <td>{item.description}</td>
                 <td>{item.unit}</td>
                 <td>{item.quantity}</td>
-                <td>{item.price}</td>
-                <td>{item.quantity * item.price || 0}</td>
+                <td>{formatCurrency(item.price)}</td>{" "}
+                {/* Mostrar precio formateado */}
+                <td>{formatCurrency(item.quantity * item.price || 0)}</td>{" "}
+                {/* Mostrar total formateado */}
               </tr>
             ))}
           </tbody>
@@ -194,7 +228,8 @@ function Factura() {
                 Total General:
               </td>
               <td style={{ fontWeight: "bold" }}>
-                {calculateTotal().toFixed(2)}
+                {formatCurrency(calculateTotal())}{" "}
+                {/* Total general formateado */}
               </td>
             </tr>
           </tfoot>

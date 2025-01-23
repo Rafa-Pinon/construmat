@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Importamos useNavigate para la navegación
 
 function Cortes() {
   const [myIncomes, setMyIncomes] = useState([]);
@@ -25,7 +26,7 @@ function Cortes() {
     setPartnerIncomes(savedPartnerIncomes);
     setPartnerExpenses(savedPartnerExpenses);
   }, []);
-
+  const navigate = useNavigate(); // Inicializamos el hook navigate
   // Guardar datos en localStorage
   useEffect(() => {
     localStorage.setItem("myIncomes", JSON.stringify(myIncomes));
@@ -121,7 +122,10 @@ function Cortes() {
     myNetIncome > partnerNetIncome ? (myNetIncome - partnerNetIncome) / 2 : 0;
   const amountToCollectFromPartner =
     partnerNetIncome > myNetIncome ? (partnerNetIncome - myNetIncome) / 2 : 0;
-
+  // Función para navegar al home
+  const goToHome = () => {
+    navigate("/"); // Redirige a la página principal
+  };
   return (
     <div className="container">
       <div className="table-container">
@@ -418,6 +422,9 @@ function Cortes() {
 
       <button className="button" onClick={handleClearData}>
         Limpiar Formularios
+      </button>
+      <button className="home-button" onClick={goToHome}>
+        Home
       </button>
     </div>
   );
