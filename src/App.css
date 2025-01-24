@@ -105,12 +105,12 @@ body {
   .logoa img {
     width: 100%;
     max-width: 200px; /* Tamaño más pequeño del logo */
-    margin-bottom: 10%; /* Espacio ajustado entre el logo y los botones */
+    margin-top: -30%;
   }
 
   .button-container {
     flex-direction: column;
-    gap: 30px;
+    gap: 40px;
     position: relative;
     width: 100%;
     margin-top: 0;
