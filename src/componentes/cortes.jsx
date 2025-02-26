@@ -38,7 +38,7 @@ function Cortes() {
   // Agregar ingresos y gastos
   const handleAddIncome = () => {
     if (concept && value) {
-      setMyIncomes([...myIncomes, { concept, value: parseFloat(value) }]);
+      setMyIncomes([{ concept, value: parseFloat(value) }, ...myIncomes]);
       setConcept("");
       setValue("");
     }
@@ -46,7 +46,7 @@ function Cortes() {
 
   const handleAddExpense = () => {
     if (concept && value) {
-      setMyExpenses([...myExpenses, { concept, value: parseFloat(value) }]);
+      setMyExpenses([{ concept, value: parseFloat(value) }, ...myExpenses]);
       setConcept("");
       setValue("");
     }
@@ -55,8 +55,8 @@ function Cortes() {
   const handleAddPartnerIncome = () => {
     if (partnerConcept && partnerValue) {
       setPartnerIncomes([
-        ...partnerIncomes,
         { concept: partnerConcept, value: parseFloat(partnerValue) },
+        ...partnerIncomes,
       ]);
       setPartnerConcept("");
       setPartnerValue("");
@@ -66,8 +66,8 @@ function Cortes() {
   const handleAddPartnerExpense = () => {
     if (partnerConcept && partnerValue) {
       setPartnerExpenses([
-        ...partnerExpenses,
         { concept: partnerConcept, value: parseFloat(partnerValue) },
+        ...partnerExpenses,
       ]);
       setPartnerConcept("");
       setPartnerValue("");
@@ -148,10 +148,10 @@ function Cortes() {
               className="input"
             />
             <button onClick={handleAddIncome} className="button income">
-              Agregar Ingreso
+              Ingreso
             </button>
             <button onClick={handleAddExpense} className="button expense">
-              Agregar Gasto
+              Gasto
             </button>
           </div>
           <div className="table-row">
@@ -275,13 +275,13 @@ function Cortes() {
               className="input"
             />
             <button onClick={handleAddPartnerIncome} className="button income">
-              Agregar Ingreso Papa
+              Ingreso
             </button>
             <button
               onClick={handleAddPartnerExpense}
               className="button expense"
             >
-              Agregar Gasto Papa
+              Gasto
             </button>
           </div>
           <div className="table-row">
