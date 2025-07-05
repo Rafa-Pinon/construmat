@@ -22,18 +22,9 @@ function Cortes() {
       JSON.parse(localStorage.getItem("partnerExpenses")) || [];
 
     setMyIncomes(savedMyIncomes);
-    setMyExpenses([
-      { concept, value: parseCurrencyToNumber(value) },
-      ...myExpenses,
-    ]);
-    setPartnerIncomes([
-      { concept: partnerConcept, value: parseCurrencyToNumber(partnerValue) },
-      ...partnerIncomes,
-    ]);
-    setPartnerExpenses([
-      { concept: partnerConcept, value: parseCurrencyToNumber(partnerValue) },
-      ...partnerExpenses,
-    ]);
+    setMyExpenses(savedMyExpenses);
+    setPartnerIncomes(savedPartnerIncomes);
+    setPartnerExpenses(savedPartnerExpenses);
   }, []);
   const navigate = useNavigate(); // Inicializamos el hook navigate
   // Guardar datos en localStorage
@@ -47,10 +38,7 @@ function Cortes() {
   // Agregar ingresos y gastos
   const handleAddIncome = () => {
     if (concept && value) {
-      setMyIncomes([
-        { concept, value: parseCurrencyToNumber(value) },
-        ...myIncomes,
-      ]);
+      setMyIncomes([{ concept, value: parseFloat(value) }, ...myIncomes]);
       setConcept("");
       setValue("");
     }
@@ -208,16 +196,6 @@ function Cortes() {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, []);
-  const formatCurrencyInput = (value) => {
-    const numeric = value.replace(/[^\d]/g, ""); // solo números
-    if (!numeric) return "";
-    return parseFloat(numeric).toLocaleString("en-US");
-  };
-
-  const parseCurrencyToNumber = (value) => {
-    const numeric = value.replace(/[^0-9.]/g, ""); // Elimina comas y símbolos
-    return parseFloat(numeric) || 0;
-  };
 
   return (
     <div className="container">
@@ -237,10 +215,10 @@ function Cortes() {
 
             <input
               ref={valueRef}
-              type="text"
+              type="number"
               placeholder="Valor"
               value={value}
-              onChange={(e) => setValue(formatCurrencyInput(e.target.value))}
+              onChange={(e) => setValue(e.target.value)}
               className="input"
             />
             <button
@@ -374,12 +352,10 @@ function Cortes() {
             />
             <input
               ref={partnerValueRef}
-              type="text"
+              type="number"
               placeholder="Valor"
               value={partnerValue}
-              onChange={(e) =>
-                setPartnerValue(formatCurrencyInput(e.target.value))
-              }
+              onChange={(e) => setPartnerValue(e.target.value)}
               className="input"
             />
             <button
