@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom"; // Importamos useNavigate para la navegación
 
 function Cortes() {
@@ -22,9 +22,18 @@ function Cortes() {
       JSON.parse(localStorage.getItem("partnerExpenses")) || [];
 
     setMyIncomes(savedMyIncomes);
-    setMyExpenses(savedMyExpenses);
-    setPartnerIncomes(savedPartnerIncomes);
-    setPartnerExpenses(savedPartnerExpenses);
+    setMyExpenses([
+      { concept, value: parseCurrencyToNumber(value) },
+      ...myExpenses,
+    ]);
+    setPartnerIncomes([
+      { concept: partnerConcept, value: parseCurrencyToNumber(partnerValue) },
+      ...partnerIncomes,
+    ]);
+    setPartnerExpenses([
+      { concept: partnerConcept, value: parseCurrencyToNumber(partnerValue) },
+      ...partnerExpenses,
+    ]);
   }, []);
   const navigate = useNavigate(); // Inicializamos el hook navigate
   // Guardar datos en localStorage
@@ -38,7 +47,10 @@ function Cortes() {
   // Agregar ingresos y gastos
   const handleAddIncome = () => {
     if (concept && value) {
-      setMyIncomes([{ concept, value: parseFloat(value) }, ...myIncomes]);
+      setMyIncomes([
+        { concept, value: parseCurrencyToNumber(value) },
+        ...myIncomes,
+      ]);
       setConcept("");
       setValue("");
     }
@@ -126,6 +138,87 @@ function Cortes() {
   const goToHome = () => {
     navigate("/"); // Redirige a la página principal
   };
+  const conceptRef = useRef(null);
+  const valueRef = useRef(null);
+  const partnerConceptRef = useRef(null);
+  const partnerValueRef = useRef(null);
+  const myIncomeButtonRef = useRef(null);
+  const myExpenseButtonRef = useRef(null);
+  const partnerIncomeButtonRef = useRef(null);
+  const partnerExpenseButtonRef = useRef(null);
+  const incomeBtnRef = useRef(null);
+  const expenseBtnRef = useRef(null);
+  const partnerIncomeBtnRef = useRef(null);
+  const partnerExpenseBtnRef = useRef(null);
+
+  const focusableRefs = [
+    conceptRef,
+    valueRef,
+    myIncomeButtonRef,
+    myExpenseButtonRef,
+    partnerConceptRef,
+    partnerValueRef,
+    partnerIncomeButtonRef,
+    partnerExpenseButtonRef,
+  ];
+
+  const inputRefs = [conceptRef, valueRef, partnerConceptRef, partnerValueRef];
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      const allFocusable = [
+        conceptRef,
+        valueRef,
+        incomeBtnRef,
+        expenseBtnRef,
+        partnerConceptRef,
+        partnerValueRef,
+        partnerIncomeBtnRef,
+        partnerExpenseBtnRef,
+      ];
+
+      const focusedElement = document.activeElement;
+      const focusedIndex = allFocusable.findIndex(
+        (ref) => ref.current === focusedElement
+      );
+
+      // Si la tecla es Enter y estás en un botón, ejecuta su acción
+      if (e.key === "Enter" && focusedElement.tagName === "BUTTON") {
+        focusedElement.click();
+        return;
+      }
+
+      // Navegar con Enter, ArrowDown, ArrowRight
+      if (
+        e.key === "ArrowDown" ||
+        e.key === "ArrowRight" ||
+        e.key === "Enter"
+      ) {
+        const nextIndex = (focusedIndex + 1) % allFocusable.length;
+        allFocusable[nextIndex]?.current?.focus();
+        // solo previene el comportamiento si NO es botón (para que click se ejecute)
+        if (focusedElement.tagName !== "BUTTON") e.preventDefault();
+      } else if (e.key === "ArrowUp" || e.key === "ArrowLeft") {
+        const prevIndex =
+          (focusedIndex - 1 + allFocusable.length) % allFocusable.length;
+        allFocusable[prevIndex]?.current?.focus();
+        e.preventDefault();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, []);
+  const formatCurrencyInput = (value) => {
+    const numeric = value.replace(/[^\d]/g, ""); // solo números
+    if (!numeric) return "";
+    return parseFloat(numeric).toLocaleString("en-US");
+  };
+
+  const parseCurrencyToNumber = (value) => {
+    const numeric = value.replace(/[^0-9.]/g, ""); // Elimina comas y símbolos
+    return parseFloat(numeric) || 0;
+  };
+
   return (
     <div className="container">
       <div className="table-container">
@@ -134,23 +227,34 @@ function Cortes() {
           <h2>Mis Ingresos y Gastos</h2>
           <div className="form">
             <input
+              ref={conceptRef}
               type="text"
               placeholder="Concepto"
               value={concept}
               onChange={(e) => setConcept(e.target.value)}
               className="input"
             />
+
             <input
-              type="number"
+              ref={valueRef}
+              type="text"
               placeholder="Valor"
               value={value}
-              onChange={(e) => setValue(e.target.value)}
+              onChange={(e) => setValue(formatCurrencyInput(e.target.value))}
               className="input"
             />
-            <button onClick={handleAddIncome} className="button income">
+            <button
+              ref={incomeBtnRef}
+              onClick={handleAddIncome}
+              className="button income"
+            >
               Ingreso
             </button>
-            <button onClick={handleAddExpense} className="button expense">
+            <button
+              ref={expenseBtnRef}
+              onClick={handleAddExpense}
+              className="button expense"
+            >
               Gasto
             </button>
           </div>
@@ -261,6 +365,7 @@ function Cortes() {
           <h2>Ingresos y Gastos de mi Papa</h2>
           <div className="form">
             <input
+              ref={partnerConceptRef}
               type="text"
               placeholder="Concepto"
               value={partnerConcept}
@@ -268,16 +373,24 @@ function Cortes() {
               className="input"
             />
             <input
-              type="number"
+              ref={partnerValueRef}
+              type="text"
               placeholder="Valor"
               value={partnerValue}
-              onChange={(e) => setPartnerValue(e.target.value)}
+              onChange={(e) =>
+                setPartnerValue(formatCurrencyInput(e.target.value))
+              }
               className="input"
             />
-            <button onClick={handleAddPartnerIncome} className="button income">
+            <button
+              ref={partnerIncomeBtnRef}
+              onClick={handleAddPartnerIncome}
+              className="button income"
+            >
               Ingreso
             </button>
             <button
+              ref={partnerExpenseBtnRef}
               onClick={handleAddPartnerExpense}
               className="button expense"
             >
