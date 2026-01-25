@@ -55,7 +55,8 @@ body {
 
 /* Estilos para los botones */
 .factura-button,
-.corte-button {
+.corte-button ,
+.recibos-button {
   flex: 1;
   background-color: #333;
   color: white;
@@ -71,14 +72,17 @@ body {
 }
 
 .factura-button:hover,
-.corte-button:hover {
+.corte-button:hover,
+.recibos-button:hover {
   background-color: #e60000;
 }
 
 .factura-button:active,
-.corte-button:active {
+.corte-button:active,
+.recibos-button:active {
   background-color: #b30000;
 }
+
 
 /* Media Queries */
 

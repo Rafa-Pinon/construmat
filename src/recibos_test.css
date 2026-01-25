@@ -1,0 +1,221 @@
+/* =========================
+   CONTENEDOR PRINCIPAL
+========================= */
+#recibo-pdf {
+  width: 816px;       /* tamaño carta a 96dpi */
+  min-height: 1056px;
+  padding: 40px;
+  background: white;
+  box-sizing: border-box;
+}
+@media print {
+  .add,
+  .delete,
+  .pdf,
+  .editor {
+    display: none !important;
+  }
+}
+.header-pdf {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.logo-pdf {
+  width: 120px;
+}
+
+.folio-pdf {
+  font-weight: bold;
+}
+
+.recibo-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  font-family: Arial, sans-serif;
+  font-size: large;
+  color: #333;
+}
+
+/* =========================
+   TITULOS
+========================= */
+.recibo-title {
+  text-align: center;
+  color: rgb(191, 7, 7);
+  margin-bottom: 20px;
+  box-shadow: inset 0 -2px 0 0 #000;
+}
+
+.recibo-subtitle {
+  color: black;
+  margin-top: 20px;
+  display: inline-block;
+  box-shadow: inset 0 -2px 0 0 #000;
+}
+
+/* =========================
+   FORMULARIO
+========================= */
+.recibo-form {
+  margin-bottom: 20px;
+}
+
+.recibo-form-group {
+  margin-bottom: 10px;
+}
+
+.recibo-form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.recibo-form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* =========================
+   ITEMS
+========================= */
+.recibo-item-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.recibo-item-group input {
+  flex: 1 1 calc(33.33% - 10px);
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* =========================
+   TABLA
+========================= */
+.recibo-table-container {
+  margin-top: 20px;
+  overflow-x: auto;
+}
+
+.recibo-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.recibo-table th,
+.recibo-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.recibo-table th {
+  background-color: rgb(191, 7, 7);
+  color: white;
+}
+
+/* =========================
+   LOGO
+========================= */
+.recibo-logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.recibo-logo img {
+  width: 100px;
+}
+
+/* =========================
+   BOTONES
+========================= */
+.recibo-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.recibo-btn-generate {
+  background-color: #4a90e2;
+  color: white;
+}
+
+.recibo-btn-delete {
+  background-color: red;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 5px;
+}
+
+.recibo-btn-delete:hover {
+  background-color: darkred;
+}
+
+/* =========================
+   FIRMAS (PDF)
+========================= */
+.recibo-firmas {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 60px;
+}
+
+.recibo-firma {
+  text-align: center;
+  width: 40%;
+}
+
+.recibo-firma-linea {
+  border-top: 1px solid #000;
+  margin-top: 40px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .recibo-item-group input {
+    flex: 1 1 100%;
+  }
+
+  .recibo-logo img {
+    width: 70px;
+  }
+}
+
+@media (max-width: 480px) {
+  .recibo-container {
+    padding: 15px;
+  }
+
+  .recibo-table th,
+  .recibo-table td {
+    font-size: 12px;
+    padding: 6px;
+  }
+
+  .recibo-btn {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+}

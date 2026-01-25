@@ -9,8 +9,10 @@ import Logo from "../src/logo/logo.png";
 import "./App.css";
 import "./factura.css";
 import "./cortes.css";
+import "./recibos_test.css";
 import Factura from "./componentes/factura";
 import Cortes from "./componentes/cortes"; // Asegúrate de tener este componente
+import Recibos from "./componentes/recibos";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -23,6 +25,9 @@ function App() {
 
   const goToCortes = () => {
     navigate("/cortes"); // Redirige a /cortes
+  };
+  const goToRecibos = () => {
+    navigate("/recibos"); // Redirige a /recibos
   };
 
   return (
@@ -41,6 +46,9 @@ function App() {
         <button className="corte-button" onClick={goToCortes}>
           Corte
         </button>
+        <button className="recibos-button" onClick={goToRecibos}>
+          Recibos
+        </button>
       </div>
     </div>
   );
@@ -55,6 +63,8 @@ function AppWrapper() {
         <Route path="/factura" element={<Factura />} />{" "}
         {/* Componente Factura */}
         <Route path="/cortes" element={<Cortes />} /> {/* Componente Cortes */}
+        <Route path="/recibos" element={<Recibos />} />{" "}
+        {/* Componente Recibos */}
       </Routes>
     </Router>
   );
