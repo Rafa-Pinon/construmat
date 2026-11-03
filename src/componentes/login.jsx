@@ -2,7 +2,7 @@ import { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth, authReady } from "../firebase";
 import Logo from "../logo/logo.png";
-import "../Login.css";
+import "../login.css";
 
 export default function Login() {
   const [correo, setCorreo] = useState("");
