@@ -1,137 +1,714 @@
-/* Aplicar box-sizing globalmente para asegurar un cálculo correcto del tamaño */
+
+/* ========================================
+   CONSTRUMAT - HOME ADMINISTRATIVO
+   ======================================== */
+
+:root {
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
 * {
   box-sizing: border-box;
 }
 
-body {
-  margin: 0px;
-  background-color: grey;
+html {
+  scroll-behavior: smooth;
 }
 
-/* Contenedor principal */
-.header {
+body {
+  margin: 0;
+  min-width: 320px;
+}
+
+.cm-app {
+  --cm-dark: #152334;
+  --cm-dark-secondary: #22354a;
+  --cm-red: #c72c35;
+  --cm-red-hover: #ad202a;
+  --cm-text: #1b2939;
+  --cm-muted: #738092;
+  --cm-border: #e5e9ef;
+
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  background-color: grey;
-  height: 100vh;
-  padding-top: 20px;
-  box-sizing: border-box; /* Asegurar que el padding esté incluido en el tamaño */
+  background: #f5f7fa;
+  color: var(--cm-text);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
 }
 
-/* Estilos para el título */
-.titulo {
-  text-align: center;
-  font-size: 200%;
-  color: black;
-  margin-bottom: -30px;
+.cm-app a {
+  text-decoration: none;
 }
 
-/* Estilo para el logo */
-.logoa {
-  margin-top: 50px;
-  
+.cm-app button,
+.cm-app a {
+  -webkit-tap-highlight-color: transparent;
 }
-.logoa img {
+
+/* ========================================
+   HEADER
+   ======================================== */
+
+.cm-header {
+  background: #ffffff;
+  border-bottom: 1px solid var(--cm-border);
   width: 100%;
-  max-width: 550px; /* Máximo tamaño para pantallas grandes */
-  height: auto;
-  margin-bottom: 30px;
 }
 
-/* Contenedor para los botones */
-.button-container {
+.cm-header-inner {
+  max-width: 1240px;
+  margin: auto;
+  padding: 16px 30px;
   display: flex;
-  width: 99%;
-  gap: 30px;
-  padding: 0 20px;
-  flex-direction: row;
-  margin-top: 5%;
-  /* position: absolute; */
-  /* bottom: 0; */
-  
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
 }
 
-/* Estilos para los botones */
-.factura-button,
-.corte-button ,
-.recibos-button {
+.cm-brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: var(--cm-text);
+}
+
+.cm-brand-logo {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cm-brand-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.cm-brand-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cm-brand-name {
+  font-size: 21px;
+  font-weight: 850;
+  letter-spacing: 2px;
+}
+
+.cm-brand-subtitle {
+  font-size: 11px;
+  color: var(--cm-muted);
+  letter-spacing: 0.3px;
+}
+
+.cm-header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #657386;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.cm-online-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--cm-red);
+}
+
+/* ========================================
+   CONTENIDO
+   ======================================== */
+
+.cm-content {
+  width: 100%;
+  max-width: 1240px;
+  margin: auto;
+  padding: 32px 30px 65px;
   flex: 1;
-  background-color: #333;
-  color: white;
-  border: none;
-  height: 20vh; /* Ajuste de la altura de los botones */
-  font-size: 3rem; /* Tamaño de fuente más pequeño para pantallas grandes */
-  font-weight: bold;
-  cursor: pointer;
-  transition: all 0.3s ease;
+}
+
+/* ========================================
+   HERO - BIENVENIDA
+   ======================================== */
+
+.cm-welcome {
+  min-height: 390px;
+  background: linear-gradient(
+    120deg,
+    #111e2e 0%,
+    #1b2c40 58%,
+    #2c4258 100%
+  );
+  border-radius: 22px;
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(20, 35, 55, 0.12);
+}
+
+.cm-welcome-content {
+  padding: 58px 55px;
+  position: relative;
+  z-index: 2;
+}
+
+.cm-welcome-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #d7e0e9;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 2px;
+}
+
+.cm-badge-line {
+  width: 23px;
+  height: 3px;
+  background: #e44950;
+  border-radius: 4px;
+}
+
+.cm-welcome h1 {
+  font-size: clamp(38px, 4.3vw, 60px);
+  line-height: 1.12;
+  font-weight: 850;
+  letter-spacing: -2px;
+  margin: 25px 0 20px;
+  color: #ffffff;
+}
+
+.cm-welcome h1 span {
+  color: #f0787e;
+}
+
+.cm-welcome-content p {
+  color: #c5d0db;
+  font-size: 15px;
+  line-height: 1.85;
+  max-width: 480px;
+  margin: 0 0 30px;
+}
+
+.cm-main-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 30px;
+  background: var(--cm-red);
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 16px 22px;
+  font-size: 13px;
+  font-weight: 750;
+  transition: 0.25s ease;
+}
+
+.cm-main-button:hover {
+  background: var(--cm-red-hover);
+  transform: translateY(-2px);
+}
+
+.cm-main-button span {
+  font-size: 20px;
+}
+
+/* ========================================
+   LOGOTIPO DEL HERO
+   ======================================== */
+
+.cm-welcome-visual {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 25px;
+  z-index: 1;
+}
+
+.cm-visual-circle {
+  width: 255px;
+  height: 255px;
+  border: 1px solid rgba(255,255,255,0.18);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255,255,255,0.035);
+}
+
+.cm-visual-inner {
+  width: 210px;
+  height: 210px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255,255,255,0.045);
+}
+
+.cm-visual-inner img {
+  width: 175px;
+  height: 175px;
+  object-fit: contain;
+  filter: drop-shadow(0 12px 15px rgba(0,0,0,0.2));
+}
+
+.cm-visual-caption {
+  color: #d2dce7;
+  font-size: 10px;
+  font-weight: 650;
+  letter-spacing: 2px;
   text-align: center;
-  border-radius: 8px;
-  box-shadow: 0 10px 30px rgba(255, 0, 0, 0.3); /* Sombra rojiza sutil */
 }
 
-.factura-button:hover,
-.corte-button:hover,
-.recibos-button:hover {
-  background-color: #e60000;
+.cm-welcome-decoration {
+  width: 500px;
+  height: 500px;
+  position: absolute;
+  right: -160px;
+  top: -210px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
-.factura-button:active,
-.corte-button:active,
-.recibos-button:active {
-  background-color: #b30000;
+/* ========================================
+   SECCION DE HERRAMIENTAS
+   ======================================== */
+
+.cm-tools-section {
+  padding-top: 55px;
+  scroll-margin-top: 25px;
 }
 
+.cm-section-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 25px;
+  margin-bottom: 28px;
+}
 
-/* Media Queries */
+.cm-section-eyebrow {
+  color: var(--cm-red);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.8px;
+  margin-bottom: 12px;
+}
 
-/* Para pantallas pequeñas (teléfonos) */
-@media (max-width: 767px) {
-  body {
-    background-color: grey;
-    overflow: hidden; /* Evita el desplazamiento */
+.cm-section-header h2 {
+  margin: 0 0 10px;
+  font-size: clamp(25px, 3vw, 34px);
+  font-weight: 800;
+  letter-spacing: -1px;
+  color: var(--cm-dark);
+}
+
+.cm-section-header p {
+  color: var(--cm-muted);
+  font-size: 14px;
+  margin: 0;
+}
+
+.cm-module-count {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--cm-muted);
+  white-space: nowrap;
+}
+
+.cm-module-count strong {
+  font-size: 30px;
+  color: var(--cm-dark);
+}
+
+.cm-module-count span {
+  font-size: 12px;
+}
+
+/* ========================================
+   TARJETAS DE HERRAMIENTAS
+   ======================================== */
+
+.cm-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.cm-tool-card {
+  min-height: 300px;
+  padding: 30px;
+  background: #ffffff;
+  border: 1px solid var(--cm-border);
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  color: var(--cm-text);
+  box-shadow: 0 5px 22px rgba(25, 40, 60, 0.035);
+  transition: 0.25s ease;
+}
+
+.cm-tool-card:hover {
+  transform: translateY(-6px);
+  border-color: #e6b7ba;
+  box-shadow: 0 16px 35px rgba(25, 40, 60, 0.1);
+}
+
+.cm-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.cm-card-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 15px;
+  background: #fff0f1;
+  color: var(--cm-red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cm-card-number {
+  color: #a8b1bd;
+  font-size: 12px;
+  font-weight: 750;
+  letter-spacing: 1px;
+}
+
+.cm-card-body {
+  margin-top: 25px;
+}
+
+.cm-card-body h3 {
+  font-size: 23px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  margin: 0 0 12px;
+}
+
+.cm-card-body p {
+  font-size: 13px;
+  line-height: 1.85;
+  color: var(--cm-muted);
+  margin: 0;
+}
+
+.cm-card-footer {
+  margin-top: auto;
+  padding-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--cm-red);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.cm-card-arrow {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #fff0f1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  transition: 0.2s ease;
+}
+
+.cm-tool-card:hover .cm-card-arrow {
+  background: var(--cm-red);
+  color: #ffffff;
+}
+
+/* ========================================
+   BANNER INFERIOR
+   ======================================== */
+
+.cm-bottom-banner {
+  margin-top: 48px;
+  padding: 25px 30px;
+  background: #eaf0f5;
+  border: 1px solid #e0e7ef;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.cm-bottom-symbol {
+  width: 52px;
+  height: 52px;
+  flex-shrink: 0;
+  background: var(--cm-dark);
+  border-radius: 12px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 850;
+  letter-spacing: 1px;
+}
+
+.cm-bottom-text {
+  flex: 1;
+}
+
+.cm-bottom-text h3 {
+  margin: 0 0 5px;
+  font-size: 15px;
+}
+
+.cm-bottom-text p {
+  margin: 0;
+  color: #718093;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.cm-bottom-decoration {
+  color: #8d9bad;
+  font-size: 10px;
+  font-weight: 750;
+  letter-spacing: 1.3px;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.cm-footer {
+  border-top: 1px solid var(--cm-border);
+  background: #ffffff;
+}
+
+.cm-footer-inner {
+  max-width: 1240px;
+  margin: auto;
+  padding: 24px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  color: #8995a3;
+  font-size: 11px;
+}
+
+/* ========================================
+   TABLET
+   ======================================== */
+
+@media (max-width: 1024px) {
+  .cm-welcome {
+    grid-template-columns: 1.3fr 0.7fr;
   }
 
-  .header {
-    padding-top: 10px;
-    justify-content: flex-start;
-    height: 100vh;
-    overflow: hidden;
-    background-color: grey;
+  .cm-welcome-content {
+    padding: 48px 38px;
   }
 
-  .titulo {
-    font-size: 1.5rem; /* Tamaño más pequeño para títulos */
-    margin-bottom: 5px; /* Menor espacio debajo del título */
+  .cm-visual-circle {
+    width: 190px;
+    height: 190px;
   }
 
-  .logoa img {
-    width: 100%;
-    max-width: 200px; /* Tamaño más pequeño del logo */
-    margin-top: -30%;
+  .cm-visual-inner {
+    width: 160px;
+    height: 160px;
   }
 
-  .button-container {
+  .cm-visual-inner img {
+    width: 140px;
+    height: 140px;
+  }
+
+  .cm-tools-grid {
+    gap: 16px;
+  }
+
+  .cm-tool-card {
+    padding: 23px;
+  }
+}
+
+/* ========================================
+   TABLET PEQUEÑA
+   ======================================== */
+
+@media (max-width: 800px) {
+  .cm-welcome {
+    grid-template-columns: 1fr;
+  }
+
+  .cm-welcome-visual {
+    display: none;
+  }
+
+  .cm-tools-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .cm-tool-card {
+    min-height: 290px;
+  }
+
+  .cm-bottom-decoration {
+    display: none;
+  }
+}
+
+/* ========================================
+   CELULAR
+   ======================================== */
+
+@media (max-width: 600px) {
+  .cm-header-inner {
+    padding: 12px 18px;
+  }
+
+  .cm-brand {
+    gap: 9px;
+  }
+
+  .cm-brand-logo {
+    width: 45px;
+    height: 45px;
+  }
+
+  .cm-brand-name {
+    font-size: 16px;
+    letter-spacing: 1px;
+  }
+
+  .cm-brand-subtitle {
+    font-size: 9px;
+  }
+
+  .cm-header-label {
+    display: none;
+  }
+
+  .cm-content {
+    padding: 18px 16px 40px;
+  }
+
+  .cm-welcome {
+    min-height: auto;
+    border-radius: 17px;
+  }
+
+  .cm-welcome-content {
+    padding: 38px 25px;
+  }
+
+  .cm-welcome-badge {
+    font-size: 9px;
+    letter-spacing: 1.4px;
+  }
+
+  .cm-welcome h1 {
+    font-size: clamp(34px, 9vw, 43px);
+    letter-spacing: -1.5px;
+    margin: 22px 0 16px;
+  }
+
+  .cm-welcome-content p {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .cm-main-button {
+    padding: 15px 18px;
+    font-size: 12px;
+  }
+
+  .cm-tools-section {
+    padding-top: 38px;
+  }
+
+  .cm-section-header {
+    align-items: flex-start;
     flex-direction: column;
-    gap: 40px;
-    position: relative;
-    width: 100%;
-    margin-top: 0;
+    gap: 14px;
   }
 
-  .factura-button,
-  .corte-button {
-    height: 20vh; /* Botones más pequeños en pantallas pequeñas */
-    font-size: 3rem; /* Tamaño de texto ajustado */
-    border-radius: 5px;
-    flex: none; /* Deshabilita el crecimiento automático */
-    margin-left: 3px;
-    margin-right: 3px;
+  .cm-section-header h2 {
+    font-size: 27px;
   }
 
-  .factura-button:hover,
-  .corte-button:hover {
-    background-color: red;
+  .cm-module-count {
+    display: none;
+  }
+
+  .cm-tools-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .cm-tool-card {
+    min-height: 250px;
+    padding: 25px;
+  }
+
+  .cm-card-body {
+    margin-top: 19px;
+  }
+
+  .cm-card-body h3 {
+    font-size: 22px;
+  }
+
+  .cm-card-footer {
+    padding-top: 20px;
+  }
+
+  .cm-bottom-banner {
+    margin-top: 32px;
+    padding: 20px;
+  }
+
+  .cm-footer-inner {
+    padding: 22px 18px;
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+}
+
+/* ========================================
+   ACCESIBILIDAD
+   ======================================== */
+
+.cm-app a:focus-visible {
+  outline: 3px solid #e65a62;
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cm-app *,
+  .cm-app *::before,
+  .cm-app *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+    animation: none !important;
   }
 }

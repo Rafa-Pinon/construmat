@@ -1,0 +1,352 @@
+
+/* CONSTRUMAT - INICIO DE SESIÓN */
+
+.cm-login-page {
+  min-height: 100vh;
+  background: #f5f7fa;
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  color: #1b2939;
+}
+
+.cm-login-page * {
+  box-sizing: border-box;
+}
+
+.cm-login-layout {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.cm-login-presentation {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    145deg,
+    #111e2e 0%,
+    #1b3047 65%,
+    #30465c 100%
+  );
+  padding: 52px clamp(30px, 5vw, 85px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: white;
+}
+
+.cm-login-presentation::before {
+  content: "";
+  position: absolute;
+  width: 560px;
+  height: 560px;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 50%;
+  right: -250px;
+  bottom: -200px;
+}
+
+.cm-login-presentation::after {
+  content: "";
+  position: absolute;
+  width: 340px;
+  height: 340px;
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 50%;
+  right: -140px;
+  bottom: -90px;
+}
+
+.cm-login-brand {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.cm-login-brand img {
+  width: 66px;
+  height: 66px;
+  object-fit: contain;
+}
+
+.cm-login-brand div {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.cm-login-brand strong {
+  font-size: 23px;
+  letter-spacing: 2px;
+  font-weight: 850;
+}
+
+.cm-login-brand span {
+  font-size: 11px;
+  color: #b9c8d6;
+}
+
+.cm-login-presentation-content {
+  max-width: 530px;
+  position: relative;
+  z-index: 1;
+}
+
+.cm-login-eyebrow {
+  display: inline-block;
+  color: #f17a80;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  font-weight: 800;
+  margin-bottom: 22px;
+}
+
+.cm-login-presentation h1 {
+  font-size: clamp(40px, 4.5vw, 68px);
+  line-height: 1.13;
+  letter-spacing: -2px;
+  font-weight: 850;
+  margin: 0 0 24px;
+}
+
+.cm-login-presentation h1 span {
+  color: #f0787e;
+}
+
+.cm-login-presentation-content p {
+  max-width: 440px;
+  color: #c2cedb;
+  font-size: 15px;
+  line-height: 1.9;
+}
+
+.cm-login-presentation-footer {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #8ea1b6;
+  position: relative;
+  z-index: 1;
+}
+
+.cm-login-form-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 55px 30px 25px;
+}
+
+.cm-login-form-container {
+  width: 100%;
+  max-width: 415px;
+  margin: auto 0;
+}
+
+.cm-login-lock {
+  width: 60px;
+  height: 60px;
+  border-radius: 17px;
+  background: #fff0f1;
+  color: #c72c35;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 26px;
+}
+
+.cm-login-small-title {
+  font-size: 10px;
+  color: #c72c35;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.cm-login-form-container h2 {
+  font-size: 36px;
+  letter-spacing: -1.3px;
+  margin: 12px 0;
+  font-weight: 850;
+}
+
+.cm-login-description {
+  color: #778497;
+  line-height: 1.8;
+  font-size: 14px;
+  margin-bottom: 35px;
+}
+
+.cm-login-form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.cm-login-form-container label {
+  font-size: 13px;
+  font-weight: 750;
+  margin-bottom: 10px;
+}
+
+.cm-login-form-container input {
+  width: 100%;
+  min-width: 0;
+  height: 52px;
+  border: 1px solid #dce3eb;
+  border-radius: 10px;
+  padding: 0 16px;
+  background: #ffffff;
+  color: #1b2939;
+  font: inherit;
+  font-size: 14px;
+  outline: none;
+  margin-bottom: 23px;
+  transition: border-color .2s, box-shadow .2s;
+}
+
+.cm-login-form-container input:focus {
+  border-color: #c72c35;
+  box-shadow: 0 0 0 3px rgba(199,44,53,.10);
+}
+
+.cm-login-password-wrapper {
+  position: relative;
+}
+
+.cm-login-password-wrapper input {
+  padding-right: 90px;
+}
+
+.cm-login-show-password {
+  position: absolute;
+  top: 17px;
+  right: 13px;
+  border: 0;
+  background: transparent;
+  color: #657386;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cm-login-submit {
+  width: 100%;
+  min-height: 54px;
+  border: 0;
+  border-radius: 10px;
+  background: #c72c35;
+  color: white;
+  font-size: 14px;
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+
+.cm-login-submit:hover:not(:disabled) {
+  background: #aa202a;
+  transform: translateY(-1px);
+}
+
+.cm-login-submit:disabled {
+  opacity: .65;
+  cursor: wait;
+}
+
+.cm-login-submit span {
+  font-size: 21px;
+}
+
+.cm-login-error {
+  background: #fff0f1;
+  border: 1px solid #f0c8cc;
+  color: #a5212c;
+  padding: 13px;
+  border-radius: 9px;
+  font-size: 12px;
+  line-height: 1.6;
+  margin-bottom: 18px;
+}
+
+.cm-login-security {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  color: #8b98a7;
+  font-size: 11px;
+  margin-top: 26px;
+  text-align: center;
+}
+
+.cm-login-security span {
+  color: #29966b;
+}
+
+.cm-login-copyright {
+  font-size: 11px;
+  color: #9aa5b3;
+  text-align: center;
+  padding-top: 30px;
+}
+
+.cm-login-mobile-logo {
+  display: none;
+}
+
+.cm-login-page button:focus-visible {
+  outline: 3px solid #e55d65;
+  outline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+  .cm-login-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cm-login-presentation {
+    display: none;
+  }
+
+  .cm-login-form-section {
+    min-height: 100vh;
+    padding: 35px 22px 25px;
+  }
+
+  .cm-login-mobile-logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 40px;
+    font-size: 19px;
+    letter-spacing: 1px;
+  }
+
+  .cm-login-mobile-logo img {
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 480px) {
+  .cm-login-form-container h2 {
+    font-size: 31px;
+  }
+
+  .cm-login-description {
+    margin-bottom: 28px;
+  }
+
+  .cm-login-mobile-logo {
+    margin-bottom: 28px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cm-login-page * {
+    transition: none !important;
+  }
+}
